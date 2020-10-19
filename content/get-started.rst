@@ -1,9 +1,9 @@
 Getting Started
 ===============
 
-OTRS is a multi-platform web application framework which was originally developed for a trouble ticket system. It supports different web servers and databases.
+OTOBO is a multi-platform web application framework which was originally developed for a trouble ticket system. It supports different web servers and databases.
 
-This manual shows how to develop your own OTRS modules and applications based on the OTRS styleguides.
+This manual shows how to develop your own OTOBO modules and applications based on the OTOBO styleguides.
 
 .. toctree::
    :maxdepth: 3

@@ -1,21 +1,21 @@
 ---
 # variables to be used inside the RST files.
 Variables:
-  doc_name: OTRS Developer Manual
+  doc_name: OTOBO Developer Manual
   doc_description: This is the description of the documentation.
-  doc_version: 9.0
+  doc_version: 10.0
   doc_yearstamp: current_yearstamp
-  doc_vendor: OTRS AG
-  doc_url: https://otrs.com
+  doc_vendor: Rother OSS GmbH
+  doc_url: https://otobo.de
   doc_datestamp: current_datestamp
   doc_license: GNU Free Documentation License
 
 # project meta information
-ProjectName: OTRS Developer Manual
-Copyright: 2001-2020 OTRS AG, https://otrs.com/
-Author: OTRS AG
-Version: 9.0
-Release: 9.0
+ProjectName: OTOBO Developer Manual
+Copyright: 2019-2021 Rother OSS GmbH, https://otobo.de/
+Author: Rother OSS GmbH
+Version: 10.0
+Release: 10.0
 
 # sphinx extension module names to be used
 Extensions:
@@ -26,15 +26,15 @@ Extensions:
 DisplayGitHubEditButton: 1
 
 # generate stable link to the current version
-Stable: 0
+Stable: 1
 
 # publish documentation to target repository
-Publish: 0
+Publish: 1
 
 # PDF output directory path and filename
 PDFOutputPath: doc-developer/{{Version}}/{{Language}}/
-PDFFilename: otrs_developer_manual_{{Version}}_{{Language}}.pdf
+PDFFilename: otobo_developer_manual_{{Version}}_{{Language}}.pdf
 
 # EPub output directory path and filename
 EPUBOutputPath: doc-developer/{{Version}}/{{Language}}/
-EPUBFilename: otrs_developer_manual_{{Version}}_{{Language}}.epub
+EPUBFilename: otobo_developer_manual_{{Version}}_{{Language}}.epub

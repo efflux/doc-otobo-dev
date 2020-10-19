@@ -1,7 +1,7 @@
 Database Mechanism
 ==================
 
-OTRS comes with a database layer that supports different databases.
+OTOBO comes with a database layer that supports different databases.
 
 The database layer ``Kernel::System::DB`` has two input options: *SQL* and *XML*.
 
@@ -243,7 +243,7 @@ Code to Process XML
 Database Drivers
 ----------------
 
-The database drivers are located under ``$OTRS_HOME/Kernel/System/DB/*.pm``.
+The database drivers are located under ``$OTOBO_HOME/Kernel/System/DB/*.pm``.
 
 
 Supported Databases
@@ -252,4 +252,4 @@ Supported Databases
 -  MySQL
 -  PostgreSQL
 -  Oracle
--  Microsoft SQL Server (only for external database connections, not as OTRS database)
+-  Microsoft SQL Server (only for external database connections, not as OTOBO database)

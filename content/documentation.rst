@@ -1,7 +1,7 @@
 Documentation
 =============
 
-From OTRS 7 the documentations are available in *reStructuredText* format, that replaced the old *DocBook* format. Various outputs are available on the `OTRS documentation page <https://doc.otrs.com/doc/index.html>`__, like HTML, EPUB and PDF.
+In OTRS 10 the documentations are available in *reStructuredText* format. Various outputs are available on the `OTOBO documentation page <https://doc.otobo.de/>`__, like HTML, EPUB and PDF.
 
 The documentation is written in English and translated into many languages.
 

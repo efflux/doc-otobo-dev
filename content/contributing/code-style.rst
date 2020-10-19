@@ -1,7 +1,7 @@
 Code Style Guide
 ================
 
-In order to preserve the consistent development of the OTRS project, we have set up guidelines regarding style for the different programming languages.
+In order to preserve the consistent development of the OTOBO project, we have set up guidelines regarding style for the different programming languages.
 
 .. _code-style-guide-perl:
 
@@ -74,7 +74,7 @@ Attach the following header to every source file. Source files are saved in UTF-
 .. code-block:: Perl
 
    # --
-   # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+   # Copyright (C) 2001-2021 Rother OSS GmbH, https://otobo.de/
    # --
    # This software comes with ABSOLUTELY NO WARRANTY. For details, see
    # the enclosed file COPYING for license information (GPL). If you
@@ -87,7 +87,7 @@ Executable files (``*.pl``) have a special header.
 
    #!/usr/bin/perl
    # --
-   # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+   # Copyright (C) 2001-2021 Rother OSS GmbH, https://otobo.de/
    # --
    # This program is free software: you can redistribute it and/or modify
    # it under the terms of the GNU General Public License as published by
@@ -107,7 +107,7 @@ Executable files (``*.pl``) have a special header.
 Conditions
 ~~~~~~~~~~
 
-Conditions can be quite complex and there can be *chained* conditions (linked with logical *or* or *and* operations). When coding for OTRS, you have to be aware of several situations.
+Conditions can be quite complex and there can be *chained* conditions (linked with logical *or* or *and* operations). When coding for OTOBO, you have to be aware of several situations.
 
 Perl best practices says, that high precedence operators (``&&`` and ``||``) shouldn't mixed up with low precedence operators (``and`` and ``or``). To avoid confusion, we always use the high precedence operators.
 
@@ -143,8 +143,8 @@ Also note, that the right parenthesis is in a line on its own and the left curly
 .. code-block:: Perl
 
    if (
-       $XMLHash[0]->{otrs_stats}[1]{StatType}[1]{Content}
-       && $XMLHash[0]->{otrs_stats}[1]{StatType}[1]{Content} eq 'static'
+       $XMLHash[0]->{otobo_stats}[1]{StatType}[1]{Content}
+       && $XMLHash[0]->{otobo_stats}[1]{StatType}[1]{Content} eq 'static'
        )
    { ... }
 
@@ -399,7 +399,7 @@ Otherwise you would get an *uninitialized* warning.
 Handling of Parameters
 ~~~~~~~~~~~~~~~~~~~~~~
 
-To fetch the parameters passed to subroutines, OTRS normally uses the hash ``%Param`` (not ``%Params``). This leads to more readable code as every time we use ``%Param`` in the subroutine code we know it is the parameter hash passed to the subroutine.
+To fetch the parameters passed to subroutines, OTOBO normally uses the hash ``%Param`` (not ``%Params``). This leads to more readable code as every time we use ``%Param`` in the subroutine code we know it is the parameter hash passed to the subroutine.
 
 Just in some exceptions a regular list of parameters should be used. So we want to avoid something like this:
 
@@ -514,7 +514,7 @@ This is wrong:
 Objects and Their Allocation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In OTRS many objects are available. But you should not use every object in every file to keep the front end/back end separation.
+In OTOBO many objects are available. But you should not use every object in every file to keep the front end/back end separation.
 
 -  Don't use the ``LayoutObject`` in core modules (``Kernel/System``).
 -  Don't use the ``ParamObject`` in core modules (``Kernel/System``).

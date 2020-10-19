@@ -1,7 +1,7 @@
 Unit Tests
 ==========
 
-OTRS provides a test suite which can be used to develop and run unit tests for all system related code.
+OTOBO provides a test suite which can be used to develop and run unit tests for all system related code.
 
 
 Creating a Test File
@@ -14,7 +14,7 @@ Every test file should ideally instantiate unit test helper object at the start,
 .. code-block:: Perl
 
    # --
-   # Copyright (C) 2001-2020 OTRS AG, https://otrs.com/
+   # Copyright (C) 2001-2021 Rother OSS GmbH, https://otobo.de/
    # --
    # This software comes with ABSOLUTELY NO WARRANTY. For details, see
    # the enclosed file COPYING for license information (GPL). If you
@@ -36,7 +36,7 @@ Every test file should ideally instantiate unit test helper object at the start,
 
 By providing ``RestoreDatabase`` parameter to helper constructor, any database statement executed during the unit test will be rolled back at the end, making sure no permanent change has been done.
 
-Like any other test suite, OTRS provides assertion methods which can be used to test conditions. For example, this is how we create a test user and test that it has been indeed created:
+Like any other test suite, OTOBO provides assertion methods which can be used to test conditions. For example, this is how we create a test user and test that it has been indeed created:
 
 .. code-block:: Perl
 
@@ -143,47 +143,47 @@ Good developers make their unit test easy to maintain. Consider putting all test
 Prerequisites for Testing
 -------------------------
 
-To be able to run the unit tests, you need to have all optional environment dependencies (Perl modules and other modules) installed, except those for different database back ends than what you are using. Run ``bin/otrs.CheckEnvironment.pl`` to verify your module installation.
+To be able to run the unit tests, you need to have all optional environment dependencies (Perl modules and other modules) installed, except those for different database back ends than what you are using. Run ``bin/otobo.CheckEnvironment.pl`` to verify your module installation.
 
-You also need to have an instance of the OTRS web front end running on the FQDN that is configured in your local OTRS's ``Config.pm`` file. This OTRS instance must use the same database that is configured for the unit tests.
+You also need to have an instance of the OTOBO web front end running on the FQDN that is configured in your local OTOBO's ``Config.pm`` file. This OTOBO instance must use the same database that is configured for the unit tests.
 
 
 Testing
 -------
 
-To run your tests, just use ``bin/otrs.Console.pl Dev::UnitTest::Run --test Calendar`` to use ``scripts/test/Calendar.t``.
+To run your tests, just use ``bin/otobo.Console.pl Dev::UnitTest::Run --test Calendar`` to use ``scripts/test/Calendar.t``.
 
 .. code-block:: bash
 
-   shell:/opt/otrs> bin/otrs.Console.pl Dev::UnitTest::Run --test Calendar
+   shell:/opt/otobo> bin/otobo.Console.pl Dev::UnitTest::Run --test Calendar
    +-------------------------------------------------------------------+
-   /opt/otrs/scripts/test/Calendar.t:
+   /opt/otobo/scripts/test/Calendar.t:
    +-------------------------------------------------------------------+
    .................................................................................................
    =====================================================================
-   yourhost ran tests in 2s for OTRS 6.0.x git
+   yourhost ran tests in 2s for OTOBO 10.0.x git
    All 97 tests passed.
-   shell:/opt/otrs>
+   shell:/opt/otobo>
 
 You can even run several tests at once, just supply additional ``--test`` arguments to the command:
 
 .. code-block:: bash
 
-   shell:/opt/otrs> bin/otrs.Console.pl Dev::UnitTest::Run --test Calendar --test Appointment
+   shell:/opt/otobo> bin/otobo.Console.pl Dev::UnitTest::Run --test Calendar --test Appointment
    +-------------------------------------------------------------------+
-   /opt/otrs/scripts/test/Calendar.t:
+   /opt/otobo/scripts/test/Calendar.t:
    +-------------------------------------------------------------------+
    .................................................................................................
    +-------------------------------------------------------------------+
-   /opt/otrs/scripts/test/Calendar/Appointment.t:
+   /opt/otobo/scripts/test/Calendar/Appointment.t:
    +-------------------------------------------------------------------+
    ..................................................................................................................
    =====================================================================
-   yourhost ran tests in 5s for OTRS 6.0.x git
+   yourhost ran tests in 5s for OTOBO 10.0.x git
    All 212 tests passed.
-   shell:/opt/otrs>
+   shell:/opt/otobo>
 
-If you execute ``bin/otrs.Console.pl Dev::UnitTest::Run`` without any argument, it will run all tests found in the system. Please note that this can take some time to finish.
+If you execute ``bin/otobo.Console.pl Dev::UnitTest::Run`` without any argument, it will run all tests found in the system. Please note that this can take some time to finish.
 
 Provide ``--verbose`` argument in order to see messages about successful tests too. Any errors encountered during testing will be displayed regardless of this switch, provided they are actually raised in the test.
 
@@ -191,7 +191,7 @@ Provide ``--verbose`` argument in order to see messages about successful tests t
 Unit Test API
 -------------
 
-OTRS provides API for unit testing that was used in the previous example. Here we'll list the most important functions, please also see the online API reference of ```Kernel::System::UnitTest`` <https://otrs.github.io/doc/api/otrs/8.0/Perl/Kernel/System/UnitTest.pm.html>`__.
+OTOBO provides API for unit testing that was used in the previous example. Here we'll list the most important functions, please also see the online API reference of ```Kernel::System::UnitTest`` <https://otobo.github.io/doc/api/otobo/8.0/Perl/Kernel/System/UnitTest.pm.html>`__.
 
 ``True()``
    This function tests whether given scalar value is a true value in Perl.
@@ -257,7 +257,7 @@ OTRS provides API for unit testing that was used in the previous example. Here w
           'Test Name'
       );
 
-Besides this, unit test helper object also provides some helpful methods for common test conditions. For full reference, please see the online API reference of ```Kernel::System::UnitTest::Helper`` <https://doc.otrs.com/doc/api/otrs/8.0/Perl/Kernel/System/UnitTest/Helper.pm.html>`__.
+Besides this, unit test helper object also provides some helpful methods for common test conditions. For full reference, please see the online API reference of ```Kernel::System::UnitTest::Helper`` <https://doc.otobo.com/doc/api/otobo/8.0/Perl/Kernel/System/UnitTest/Helper.pm.html>`__.
 
 ``GetRandomID()``
    This function creates a random ID that can be used in tests as a unique identifier. It is guaranteed that within a test this function will never return a duplicate.
@@ -350,9 +350,9 @@ Besides this, unit test helper object also provides some helpful methods for com
    .. code-block:: Perl
 
       $Self->{TestDatabase} = {
-          DatabaseDSN  => 'DBI:mysql:database=otrs_test;host=127.0.0.1;',
-          DatabaseUser => 'otrs_test',
-          DatabasePw   => 'otrs_test',
+          DatabaseDSN  => 'DBI:mysql:database=otobo_test;host=127.0.0.1;',
+          DatabaseUser => 'otobo_test',
+          DatabasePw   => 'otobo_test',
       };
 
    The method call will override global database configuration for duration of the test, i.e. temporary database will receive all calls sent over system ``DBObject``.
@@ -364,10 +364,10 @@ Besides this, unit test helper object also provides some helpful methods for com
    .. code-block:: Perl
 
       $Helper->ProvideTestDatabase(
-          DatabaseXMLString => $XML,      # (optional) OTRS database XML schema to execute
+          DatabaseXMLString => $XML,      # (optional) OTOBO database XML schema to execute
                                           # or
           DatabaseXMLFiles => [           # (optional) List of XML files to load and execute
-              '/opt/otrs/scripts/database/otrs-schema.xml',
-              '/opt/otrs/scripts/database/otrs-initial_insert.xml',
+              '/opt/otobo/scripts/database/otobo-schema.xml',
+              '/opt/otobo/scripts/database/otobo-initial_insert.xml',
           ],
       );

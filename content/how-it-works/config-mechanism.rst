@@ -1,14 +1,14 @@
 Config Mechanism
 ================
 
-OTRS comes with a dedicated mechanism to manage configuration options via a graphical interface (system configuration). This section describes how it works internally and how you can provide new configuration
+OTOBO comes with a dedicated mechanism to manage configuration options via a graphical interface (system configuration). This section describes how it works internally and how you can provide new configuration
 options or change existing default values.
 
 
-``Defaults.pm``: OTRS Default Configuration
+``Defaults.pm``: OTOBO Default Configuration
 -------------------------------------------
 
-The default configuration file of OTRS is ``Kernel/Config/Defaults.pm``. This file is needed for operation of freshly installed systems without a deployed XML configuration and should be left untouched as it is automatically updated on framework updates.
+The default configuration file of OTOBO is ``Kernel/Config/Defaults.pm``. This file is needed for operation of freshly installed systems without a deployed XML configuration and should be left untouched as it is automatically updated on framework updates.
 
 
 Automatically Generated Configuration Files
@@ -25,34 +25,34 @@ In ``Kernel/Config/Files`` you can find some automatically generated configurati
 ``ZZZProcessManagement.pm``
    Perl cache of process management configuration from database.
 
-These files are a Perl representation of the current system configuration. They should never be manually changed as they are overwritten by OTRS.
+These files are a Perl representation of the current system configuration. They should never be manually changed as they are overwritten by OTOBO.
 
 
 XML Configuration Files
 -----------------------
 
-In OTRS, configuration options that the administrator can configure via system configuration are provided via XML files with a special format. To convert old XML's you can use the following command:
+In OTOBO, configuration options that the administrator can configure via system configuration are provided via XML files with a special format. To convert old XML's you can use the following command:
 
 .. code-block:: Bash
 
-   otrs> /opt/otrs/bin/otrs.Console.pl Dev::Tools::Migrate::ConfigXMLStructure
+   otobo> /opt/otobo/bin/otobo.Console.pl Dev::Tools::Migrate::ConfigXMLStructure
 
 The file ``Kernel/Config/Files/ZZZAAuto.pm`` is a cached Perl version of the XML that contains all settings with their current value. It can be (re-)generated with:
 
 .. code-block:: Bash
 
-   otrs> /opt/otrs/bin/otrs.Console.pl Maint::Config::Rebuild
+   otobo> /opt/otobo/bin/otobo.Console.pl Maint::Config::Rebuild
 
 Each XML config file has the following layout:
 
 .. code-block:: XML
 
    <?xml version="1.0" encoding="utf-8" ?>
-   <otrs_config version="2.0" init="Changes">
+   <otobo_config version="2.0" init="Changes">
 
        <!--  settings will be here -->
 
-   </otrs_config>
+   </otobo_config>
                
 
 ``init``
@@ -237,7 +237,7 @@ A config element for numbers and single-line strings. Checking the validity with
    </Setting>
                        
 
-The optional ``Translatable`` attribute marks this setting as translatable, which will cause it to be included in the OTRS translation files. This attribute can be placed on any tag (see also below).
+The optional ``Translatable`` attribute marks this setting as translatable, which will cause it to be included in the OTOBO translation files. This attribute can be placed on any tag (see also below).
 
 
 ``Password``

@@ -117,8 +117,8 @@ Use literal blocks for code snippets, terminal outputs, configuration files, etc
    ::
 
       $Self->{DatabaseHost} = '127.0.0.1';
-      $Self->{Database} = 'otrs';
-      $Self->{DatabaseUser} = 'otrs';
+      $Self->{Database} = 'otobo';
+      $Self->{DatabaseUser} = 'otobo';
 
 If the language of the code snippet is known, you can specify it for syntax highlighting:
 
@@ -127,8 +127,8 @@ If the language of the code snippet is known, you can specify it for syntax high
    .. code-block:: perl
 
       $Self->{DatabaseHost} = '127.0.0.1';
-      $Self->{Database} = 'otrs';
-      $Self->{DatabaseUser} = 'otrs';
+      $Self->{Database} = 'otobo';
+      $Self->{DatabaseUser} = 'otobo';
 
 .. code-block:: xml
 
@@ -171,17 +171,17 @@ Hyperlinks can be used inline or referenced. For inline use, encapsulate the tex
 
 .. code-block:: rst
 
-   Visit `OTRS website <https://otrs.com>`__ for more information.
+   Visit `OTOBO website <https://otobo.de>`__ for more information.
 
-The link above will display as: `OTRS website <https://otrs.com>`__.
+The link above will display as: `OTOBO website <https://otobo.de>`__.
 
 To create referenced links, you have to separate the text and the link. Example:
 
 .. code-block:: rst
 
-   The documentations are available in the `OTRS documentation portal`_.
+   The documentations are available in the `OTOBO documentation portal`_.
 
-   .. _OTRS documentation portal: https://doc.otrs.com/
+   .. _OTOBO documentation portal: https://doc.otobo.de/
 
 
 Images

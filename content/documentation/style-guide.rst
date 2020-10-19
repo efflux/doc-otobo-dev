@@ -13,7 +13,7 @@ For example this is a **wrong** example for writing content:
 
 .. code-block:: rst
 
-   The agents are able to change the interface language of OTRS. To change the
+   The agents are able to change the interface language of OTOBO. To change the
    interface language, click on your avatar on the top left corner, then select
    Personal Settings menu item. A new screen will be displayed. On this screen
    click on the User Profile, and then find a widget named Language. Select the
@@ -24,7 +24,7 @@ The same content in **suggested** *human understandable* format:
 
 .. code-block:: rst
 
-   To change the interface language of OTRS:
+   To change the interface language of OTOBO:
 
    1. Click on your avatar on the top left corner.
    2. Select *Personal Settings*.
@@ -38,7 +38,7 @@ The latter is easier to translate, because 6 short sentences will be included in
 Screenshots
 -----------
 
-Don't use the native resolution of your machine. Usually it is full HD or bigger, so creating a screenshot with this resolution will became unreadable in some output, because all the images have to be shrink to the width of A4 paper in case of PDF. OTRS uses responsive design, so 1025 pixels is the minimum, that OTRS assumes it is a large display. Please use this as width of your screenshots.
+Don't use the native resolution of your machine. Usually it is full HD or bigger, so creating a screenshot with this resolution will became unreadable in some output, because all the images have to be shrink to the width of A4 paper in case of PDF. OTOBO uses responsive design, so 1025 pixels is the minimum, that OTOBO assumes it is a large display. Please use this as width of your screenshots.
 
 .. seealso::
 
@@ -69,7 +69,7 @@ It is also wrong, if the screenshot has good resolution in pixels, but with high
 Create Screenshots with Firefox
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If only a part of the screenshot is required, the screenshot needs to be cropped. The administrator interface of OTRS consist of a left sidebar and a main content column. To create screenshots with Firefox:
+If only a part of the screenshot is required, the screenshot needs to be cropped. The administrator interface of OTOBO consist of a left sidebar and a main content column. To create screenshots with Firefox:
 
 1. Right click on an element in the browser and select *Inspect element*.
 2. Select the element in the DOM, if it was not selected.

@@ -1,7 +1,7 @@
 Documentation Infrastructure
 ============================
 
-OTRS uses `Sphinx <http://www.sphinx-doc.org/>`__ to generate the outputs. The HTML output is generated using the `Read the Docs <https://readthedocs.org/>`__ theme.
+OTOBO uses `Sphinx <http://www.sphinx-doc.org/>`__ to generate the outputs. The HTML output is generated using the `Read the Docs <https://readthedocs.org/>`__ theme.
 
 .. note::
 

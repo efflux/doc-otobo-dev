@@ -4,7 +4,7 @@ Log Mechanism
 System Log
 ----------
 
-OTRS comes with a system log back end that can be used for application logging and debugging.
+OTOBO comes with a system log back end that can be used for application logging and debugging.
 
 The ``Log`` object can be accessed and used via the object manager like this:
 
@@ -30,7 +30,7 @@ The output of the system log can be directed to either a syslog daemon or log fi
 Communication Log
 -----------------
 
-In addition to system log, OTRS provides specialized logging back end for any communication related logging. The system comes with dedicated tables and front ends to track and display communication logs for easier debugging and operational overview.
+In addition to system log, OTOBO provides specialized logging back end for any communication related logging. The system comes with dedicated tables and front ends to track and display communication logs for easier debugging and operational overview.
 
 To take advantage of the new system, first create a non-singleton instance of communication log object:
 
@@ -123,7 +123,7 @@ Otherwise, stop the object log and in turn communication log as success:
        ObjectLogType => 'Message',
        Priority      => 'Error',
        Key           => 'Kernel::System::MailAccount::POP3',
-       Value         => "Could not process message. Raw mail saved (report it on http://bugs.otrs.org/)!",
+       Value         => "Could not process message. Raw mail saved (report it on https://github.com/RotherOSS/otobo/issues/)!",
    );
 
    $CommunicationLogObject->ObjectLogStop(

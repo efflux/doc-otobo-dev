@@ -1,9 +1,9 @@
 Translating the Documentation
 =============================
 
-All translations of the OTRS GUI, the public extension modules and the documentations are managed using `Weblate <https://translate.otrs.com/>`__.
+All translations of the OTOBO GUI, the public extension modules and the documentations are managed using `Weblate <https://translate.otobo.de/>`__.
 
-From OTRS 7 the documentations are available in *reStructuredText* format, that replaced the old *DocBook* format. Be careful not to break the structure while translating the documentation.
+In OTOBO 10 the documentations are available in *reStructuredText* format. Be careful not to break the structure while translating the documentation.
 
 Here are some examples.
 
@@ -74,10 +74,10 @@ External links
 
    .. code-block:: none
 
-      See `OTRS website <https://otrs.com/>`__ for more information.
+      See `OTOBO website <https://otobo.de/>`__ for more information.
 
    Example translation into Hungarian:
 
    .. code-block:: none
 
-      Nézze meg az `OTRS weboldalát <https://otrs.com/>`__ a további információkért.
+      Nézze meg az `OTOBO weboldalát <https://otobo.de/>`__ a további információkért.
