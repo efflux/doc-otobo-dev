@@ -37,9 +37,8 @@ Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de).
 
    get-started
    how-it-works
-   how-to-extend-otrs
-   how-to-publish-otrs-extensions
+   how-to-extend-otobo
+   how-to-publish-otobo-extensions
    documentation
    contributing
    additional-resources
-
