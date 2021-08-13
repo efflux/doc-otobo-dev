@@ -12,7 +12,7 @@ In Perl code, all literal strings to be translated are automatically marked for 
 
    $LanguageObject->Translate('My string %s', $Data)
 
-This will mark *My string %s* for translation. If you need to mark strings, but NOT translate them in the code yet, you can use the NOOP method ``Kernel::Langauge::Translatable()``.
+This will mark *My string %s* for translation. If you need to mark strings, but **not** translate them in the code yet, you can use the NOOP method ``Kernel::Langauge::Translatable()``.
 
 .. code-block:: Perl
 
