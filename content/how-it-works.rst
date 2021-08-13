@@ -1,4 +1,4 @@
-OTRS Internals - How it Works
+OTOBO Internals - How it Works
 =============================
 
 .. toctree::

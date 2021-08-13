@@ -2,7 +2,7 @@ Additional Resources
 ====================
 
 otobo.de
-   The OTOBO website with source code, documentation and news is available at `www.otobo.de <https://www.otobo.de/>`__. Here you can also find information about professional services and OTRS administrator training seminars from Rother OSS GmbH, the creator of OTOBO.
+   The OTOBO website with source code, documentation and news is available at `www.otobo.de <https://www.otobo.de/>`__. Here you can also find information about professional services and OTOBO administrator training seminars from Rother OSS GmbH, the creator of OTOBO.
 
 Online API Library
    The OTRS developer API documentation is available for `Perl`_ and `JavaScript`_.
