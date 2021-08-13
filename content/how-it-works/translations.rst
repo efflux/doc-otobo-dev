@@ -26,7 +26,7 @@ This will mark *My string %s* for translation. If you need to mark strings, but 
    use strict;
    use warnings;
 
-   use Kernel::Language (qw(Translatable));
+   use Kernel::Language qw(Translatable);
 
    ...
 
