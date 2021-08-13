@@ -1,7 +1,12 @@
 Localization / Translation Mechanism
 ====================================
 
-There are four steps needed to translate / localize software: marking localizable strings in the source files, generating the translation database/file, the translation process itself, and the usage of translated data within the code.
+There are four steps needed to translate / localize software:
+
+- marking localizable strings in the source files
+- generating the translation database/file
+- the translation process itself
+- the usage of translated content within the code
 
 Marking Translatable Strings in the Source Files
 ------------------------------------------------
