@@ -23,10 +23,6 @@ Basic Operation
 
 With the configuration settings ``Loader::Enabled::CSS`` and ``Loader::Enabled::JavaScript``, the loader can be turned on and off for CSS and JavaScript, respectively (it is on by default).
 
-.. warning::
-
-   Because of rendering problems in Internet Explorer, the loader cannot be turned off for CSS files for this client browser (config setting will be overridden). Up to version 8, Internet Explorer cannot handle   more than 32 CSS files on a page.
-
 To learn about how the loader works, please turn it off in your OTOBO installation with the aforementioned configuration settings. Now look at the source code of the application module that you are currently using in this OTOBO system (after a reload, of course). You will see that there are many CSS files loaded in the ``<head>`` section of the page, and many JavaScript files at the bottom of the page, just before the closing ``</body>`` element.
 
 Having the content like this in many individual files with a readable formatting makes the development much easier, and even possible at all. However, this has the disadvantage of a large number of HTTP requests (network latency has a big effect) and unnecessary content (whitespace and documentation) which needs to be transferred to the client.
