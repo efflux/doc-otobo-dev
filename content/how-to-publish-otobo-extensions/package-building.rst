@@ -351,15 +351,15 @@ This is an example spec file looks with some of the above tags.
    <?xml version="1.0" encoding="utf-8" ?>
    <otobo_package version="1.0">
        <Name>Calendar</Name>
-       <Version>0.0.1</Version>
-       <Framework>7.0.x</Framework>
+       <Version>10.0.1</Version>
+       <Framework>10.0.x</Framework>
        <Vendor>Rother OSS GmbH</Vendor>
        <URL>https://otobo.com/</URL>
        <License>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</License>
        <ChangeLog Version="1.1.2" Date="2018-11-15 18:45:21">Added some feature.</ChangeLog>
        <ChangeLog Version="1.1.1" Date="2018-11-15 16:17:51">New package.</ChangeLog>
-       <Description Lang="en">A web calendar.</Description>
-       <Description Lang="de">Ein Web Kalender.</Description>
+       <Description Lang="en">A customer package.</Description>
+       <Description Lang="de">Ein kundenspezifisches Paket.</Description>
        <IntroInstall Type="post" Lang="en" Title="Thank you!">Thank you for choosing the Calendar module.</IntroInstall>
        <IntroInstall Type="post" Lang="de" Title="Vielen Dank!">Vielen Dank fuer die Auswahl des Kalender Modules.</IntroInstall>
        <BuildDate>?</BuildDate>
