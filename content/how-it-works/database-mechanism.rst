@@ -9,7 +9,9 @@ The database layer ``Kernel::System::DB`` has two input options: *SQL* and *XML*
 SQL
 ---
 
-The SQL interface should be used for normal database actions (``SELECT``, ``INSERT``, ``UPDATE``, etc.). It can be used like a normal Perl DBI interface.
+The SQL interface should be used for normal database actions (``SELECT``, ``INSERT``, ``UPDATE``, etc.).
+It can be used like a normal Perl DBI interface. The limitation is that only a single statement handle may
+be active per database object.
 
 
 INSERT/UPDATE/DELETE statements
