@@ -19,17 +19,28 @@ INSERT/UPDATE/DELETE statements
 
 .. code-block:: Perl
 
-   $Kernel::OM->Get('Kernel::System::DB')->Do(
-       SQL=> "INSERT INTO table (name, id) VALUES ('SomeName', 123)",
-   );
+    my $Name        = 'Arne ßaknussemm';
+    my $YearOfBirth = 1662;
+    my $DBObject    = $Kernel::OM->Get('Kernel::System::DB');
 
-   $Kernel::OM->Get('Kernel::System::DB')->Do(
-       SQL=> "UPDATE table SET name = 'SomeName', id = 123",
-   );
+    # created
+    $DBObject->Do(
+        SQL  => 'INSERT INTO alchemists (name, birth_year) VALUES ( ?, ? )',
+        Bind => [ \$Name, \$YearOfBirth ],
+    );
 
-   $Kernel::OM->Get('Kernel::System::DB')->Do(
-       SQL=> "DELETE FROM table WHERE id = 123",
-   );
+    # update
+    $Name =~ s/ß/S/;
+    $YearOfBirth++;
+    $DBObject->Do(
+        SQL  => 'UPDATE alchemists SET name = ?, birth_year = ?',
+        Bind => [ \$Name, \$YearOfBirth ],
+    );
+
+    # delete
+    $DBObject->Do(
+       SQL=> 'DELETE FROM alchemists WHERE birth_year > 2022',
+    );
 
 
 SELECT statement
