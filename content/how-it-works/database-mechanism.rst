@@ -35,38 +35,57 @@ SELECT statement
 
 .. code-block:: Perl
 
-   my $SQL = "SELECT id FROM table WHERE tn = '123'";
+    my $DBObject = $Kernel::OM->Get('Kernel::System::DB');
 
-   $Kernel::OM->Get('Kernel::System::DB')->Prepare(SQL => $SQL, Limit => 15);
+    # get the last 15 steps for transaction 123
+    my $TransactionNumber = 123;
+    my $SQL = qq{SELECT step_id FROM transaction_steps WHERE tn = ? ORDER BY step_id DESC};
+    $DBObject->Prepare(
+        SQL   => $SQL,
+        Bind  => [ \$TransactionNumber ],
+        Limit => 15,
+    );
 
-   while (my @Row = $Kernel::OM->Get('Kernel::System::DB')->FetchrowArray()) {
-       $Id = $Row[0];
-   }
-   return $Id;
-               
+    my @StepIds;
+    while (my @Row = $DBObject->FetchrowArray()) {
+        push @StepIds, $Row[0];
+    }
+
+    # get description for all valid steps
+    $DBObject->Prepare(
+        SQL   => q{SELECT step_id, description FROM transaction_steps WHERE valid = 1},
+    );
+
+    my %StepIdToDescription;
+    while (my ($StepId, $Description) = $DBObject->FetchrowArray()) {
+        $StepIdToDescription{$StepId} = $Description;
+    }
+
+    # get the number of valid steps
+    $DBObject->Prepare(
+        SQL   => q{SELECT COUNT(*) FROM transaction_steps WHERE valid = 1},
+    );
+
+    # when there is number of results is known, then no loop is required
+    my ($NumValid) = $DBObject->FetchRowArray();
+
+    # loops can alse be avoided with SelectAll()
+    # SelectAll() returns a reference to an array of array references
+    my @ValidIds = map { $_->[0] } $DBObject->SelectAll(
+        SQL => q{SELECT DESTINCT valid_id FROM transaction_steps ORDER BY valid_id ASC},
+    )->@*;
+
 .. note::
 
    Take care to use ``Limit`` as param and not in the SQL string because not all databases support ``LIMIT`` in SQL strings.
 
-.. code-block:: Perl
-
-   my $SQL = "SELECT id FROM table WHERE tn = ? AND group = ?";
-
-   $Kernel::OM->Get('Kernel::System::DB')->Prepare(
-       SQL   => $SQL,
-       Limit => 15,
-       Bind  => [ $Tn, $Group ],
-   );
-
-   while (my @Row = $Kernel::OM->Get('Kernel::System::DB')->FetchrowArray()) {
-       $Id = $Row[0];
-   }
-   return $Id;
-               
 .. note::
 
-   Use the ``Bind`` attribute where ever you can, especially for long statements. If you use ``Bind`` you do not need the function ``Quote()``.
+   Use the ``Bind`` attribute whereever you can, especially for long statements. If you use ``Bind`` you do not need the function ``Quote()``.
 
+.. note::
+
+   Use the ``Bind`` attribute whereever you can, especially for long statements. If you use ``Bind`` you do not need the function ``Quote()``.
 
 QUOTE
 ~~~~~
