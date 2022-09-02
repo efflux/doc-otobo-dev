@@ -266,7 +266,7 @@ The database drivers are located under ``$OTOBO_HOME/Kernel/System/DB/*.pm``.
 Supported Databases
 -------------------
 
--  MySQL
+-  MySQL or MariaDB
 -  PostgreSQL
 -  Oracle
 -  Microsoft SQL Server (only for external database connections, not as OTOBO database)
