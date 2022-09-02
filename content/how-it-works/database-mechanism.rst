@@ -95,30 +95,28 @@ String:
 .. code-block:: Perl
 
    my $QuotedString = $Kernel::OM->Get('Kernel::System::DB')->Quote("It's a problem!");
-                       
 
 Integer:
 
 .. code-block:: Perl
 
    my $QuotedInteger = $Kernel::OM->Get('Kernel::System::DB')->Quote('123', 'Integer');
-                       
 
 Number:
 
 .. code-block:: Perl
 
    my $QuotedNumber = $Kernel::OM->Get('Kernel::System::DB')->Quote('21.35', 'Number');
-                       
+
 .. note::
 
    Please use the ``Bind`` attribute instead of ``Quote()`` where ever you can.
 
-
 XML
 ---
 
-The XML interface should be used for ``INSERT``, ``CREATE TABLE``, ``DROP TABLE`` and ``ALTER TABLE``. As this syntax is different from database to database, using it makes sure that you write applications that can be used in all of them.
+The XML interface should be used for ``INSERT``, ``CREATE TABLE``, ``DROP TABLE`` and ``ALTER TABLE``. As this syntax is different from database to database,
+using it makes sure that you write applications that can be used in all of them.
 
 
 INSERT
@@ -252,10 +250,10 @@ Code to Process XML
    my @SQL = $Kernel::OM->Get('Kernel::System::DB')->SQLProcessor(
        Database => \@XMLARRAY,
    );
-   push(@SQL, $Kernel::OM->Get('Kernel::System::DB')->SQLProcessorPost());
+   push @SQL, $Kernel::OM->Get('Kernel::System::DB')->SQLProcessorPost();
 
-   for (@SQL) {
-       $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => $_);
+   for my $Statement (@SQL) {
+       $Kernel::OM->Get('Kernel::System::DB')->Do(SQL => $Statement);
    }
 
 
