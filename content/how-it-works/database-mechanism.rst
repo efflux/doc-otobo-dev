@@ -98,7 +98,7 @@ SELECT statement
 
 .. note::
 
-   Use the ``Bind`` attribute whereever you can, especially for long statements. If you use ``Bind`` you do not need the function ``Quote()``.
+   Beware that `SelectAll()` may not be used within a loop over the `FetchrowArray()` results.
 
 QUOTE
 ~~~~~
