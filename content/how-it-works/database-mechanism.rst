@@ -80,7 +80,7 @@ SELECT statement
     );
 
     # when there is number of results is known, then no loop is required
-    my ($NumValid) = $DBObject->FetchRowArray();
+    my ($NumValid) = $DBObject->FetchrowArray();
 
     # loops can alse be avoided with SelectAll()
     # SelectAll() returns a reference to an array of array references
