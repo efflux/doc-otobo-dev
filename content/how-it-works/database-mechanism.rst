@@ -41,6 +41,18 @@ INSERT/UPDATE/DELETE statements
        SQL=> 'DELETE FROM alchemists WHERE birth_year > 2022',
     );
 
+A special feature is the possibility to insert a timestamp that is generated on the client side.
+Using the client time avoids inconsistences with a divergent time on the database host.
+
+.. code-block:: Perl
+
+    # add entry
+    my $Name        = 'Professor Otto Lidenbrock';
+    my $DBObject    = $Kernel::OM->Get('Kernel::System::DB');
+    $DBObject->Do(
+        SQL  => 'INSERT INTO geologist (name, created) VALUES (?, current_timestamp)',
+        Bind => [ \$Name ],
+    );
 
 SELECT statement
 ~~~~~~~~~~~~~~~~
