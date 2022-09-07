@@ -1,17 +1,16 @@
 Database Mechanism
 ==================
 
-OTOBO comes with a database layer that supports different databases.
+OTOBO comes with a database layer that provides access to different databases.
 
-The database layer ``Kernel::System::DB`` has two input options: *SQL* and *XML*.
-
+``Kernel::System::DB`` supports two ways of interacting with the database: *SQL* and *XML*.
 
 SQL
 ---
 
 The SQL interface should be used for normal database actions (``SELECT``, ``INSERT``, ``UPDATE``, etc.).
-It can be used like a normal Perl DBI interface. The limitation is that only a single statement handle may
-be active per database object.
+It can be used more or less like the Perl DBI interface. One limitation is that only a single statement handle
+may be active per database object.
 
 
 INSERT/UPDATE/DELETE statements
