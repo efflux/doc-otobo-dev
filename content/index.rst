@@ -1,4 +1,6 @@
-
+.. image:: ../images/otrs-logo.png
+   :align: center
+   
 ===========================
 OTOBO Development Tutorial
 ===========================
