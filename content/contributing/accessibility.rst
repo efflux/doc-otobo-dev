@@ -11,7 +11,7 @@ What is Accessibility?
 
 Accessibility is a general term used to describe the degree to which a product, device, service or environment is accessible by as many people as possible. Accessibility can be viewed as the *ability to access* any possible benefit of some system or entity. Accessibility is often used to focus on people with disabilities and their right of access to entities, often through use of assistive technology.
 
-In the context of web development, accessibility has a focus on grant people with impairments full access to web interfaces. For example, this group of people can include partially visually impaired or completely blind people. While the former can still partially use the GUI, the latter have to completely rely on assistive technologies such as software which reads the screen to them (screen readers).
+In the context of web development, accessibility has a focus on providing people with impairments full access to web interfaces. For example, this group of people can include partially visually impaired or completely blind people. While the former can still partially use the GUI, the latter have to completely rely on assistive technologies such as software which reads the screen to them (screen readers).
 
 
 Why is it important for OTOBO?
