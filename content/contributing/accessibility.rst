@@ -9,15 +9,15 @@ Accessibility Basics
 What is Accessibility?
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Accessibility is a general term used to describe the degree to which a product, device, service or environment is accessible by as many people as possible. Accessibility can be viewed as the *ability to access* and possible benefit of some system or entity. Accessibility is often used to focus on people with disabilities and their right of access to entities, often through use of assistive technology.
+Accessibility is a general term used to describe the degree to which a product, device, service or environment is accessible by as many people as possible. Accessibility can be viewed as the *ability to access* any possible benefit of some system or entity. Accessibility is often used to focus on people with disabilities and their right of access to entities, often through use of assistive technology.
 
-In the context of web development, accessibility has a focus on enabling people with impairments full access to web interfaces. For example, this group of people can include partially visually impaired or completely blind people. While the former can still partially use the GUI, the latter have to completely rely on assistive technologies such as software which reads the screen to them (screen readers).
+In the context of web development, accessibility has a focus on providing people with impairments full access to web interfaces. For example, this group of people can include partially visually impaired or completely blind people. While the former can still partially use the GUI, the latter have to completely rely on assistive technologies such as software which reads the screen to them (screen readers).
 
 
 Why is it important for OTOBO?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To enable impaired users access to OTOBO systems is a valid goal in itself. It shows respect.
+To enable impaired users to access OTOBO systems is a valid goal in itself. It shows respect.
 
 Furthermore, fulfilling accessibility standards is becoming increasingly important in the public sector (government institutions) and large companies, which both belong to the target markets of OTOBO.
 
@@ -59,7 +59,7 @@ This W3C standard gives general guidelines for how to create accessible web page
 - `How to Meet WCAG 2.0 <http://www.w3.org/WAI/WCAG20/quickref/>`__
 - `Understanding WCAG 2.0 <http://www.w3.org/TR/UNDERSTANDING-WCAG20/>`__
 
-WCAG has different levels of accessibility support. We currently plan to support level A, as AA and AAA deal with matters that seem not relevant for OTOBO.
+WCAG has different levels of accessibility support. We currently plan to support level A, as AA and AAA deal with matters that seem to be not relevant for OTOBO.
 
 
 Accessible Rich Internet Applications (WAI-ARIA) 1.0
