@@ -148,14 +148,19 @@ Package Actions
 
       <DatabaseInstall>
           <TableCreate Name="calendar_event">
-          <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
-          <Column Name="title" Required="true" Size="250" Type="VARCHAR"/>
-          <Column Name="content" Required="false" Size="250" Type="VARCHAR"/>
-          <Column Name="start_time" Required="true" Type="DATE"/>
-          <Column Name="end_time" Required="true" Type="DATE"/>
-          <Column Name="owner_id" Required="true" Type="INTEGER"/>
-          <Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/>
+            <Column Name="id" Required="true" PrimaryKey="true" AutoIncrement="true" Type="BIGINT"/>
+            <Column Name="title" Required="true" Size="250" Type="VARCHAR"/>
+            <Column Name="content" Required="false" Size="250" Type="VARCHAR"/>
+            <Column Name="start_time" Required="true" Type="DATE"/>
+            <Column Name="end_time" Required="true" Type="DATE"/>
+            <Column Name="owner_id" Required="true" Type="INTEGER"/>
+            <Column Name="event_status" Required="true" Size="50" Type="VARCHAR"/>
           </TableCreate>
+          <TableAlter Name="calendar_event">
+            <ColumnChange Name="event_status1" Required="true" Size="50" Type="VARCHAR"/>
+            <ColumnAdd Name="event_status2" Required="true" Size="50" Type="VARCHAR"/>
+            <ColumnDrop Name="event_status2" Required="true" Size="50" Type="VARCHAR"/>
+          </TableAlter>
       </DatabaseInstall>
 
    You also can choose ``<DatabaseInstall Type="post">`` or ``<DatabaseInstall Type="pre">`` to define the time of execution separately (``post`` is default). For more info see :ref:`Package Life Cycle`.
