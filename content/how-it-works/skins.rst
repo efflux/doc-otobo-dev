@@ -19,10 +19,6 @@ All skins are in ``$OTOBO_HOME/var/httpd/htdocs/skins/Agent/$SKIN_NAME``.
 
 Each of the agents can select individually, which of the installed agent skins they want to *wear*.
 
-.. note::
-
-   Skin support for customer interface was dropped with the new external interface. To create customized layout for external interface, use the *Layout* module of the admin interface.
-
 
 How Skins Are Loaded
 --------------------
