@@ -880,7 +880,9 @@ Dynamic Field Driver Example
 
 The driver *represents* the dynamic field. It contains several functions that are used wide in the OTOBO framework.
 
-A driver can inherit some functions from base classes, for example the ``TextArea`` driver inherits most of the functions from ``Base.pm`` and ``BaseText.pm`` (``Base/Text.pm`` in the new API) and it only implements the functions that requires different logic or results. The checkbox field driver only inherits from ``Base.pm``, as all other functions are very different from any other base driver.
+A driver can inherit some functions from base classes. For example the ``TextArea`` driver inherits most of the functions from ``Base.pm`` and ``BaseText.pm``.
+This means that ``TextArea`` only needs to implement the functions that requires different logic or results.
+The checkbox field driver only inherits from ``Base.pm``, as all other functions are very different from any other base driver.
 
 .. seealso::
 
