@@ -2,7 +2,7 @@ Create New Dynamic Field
 ========================
 
 To illustrate this process a new dynamic field *Password* will be created. This new dynamic field type will show a new password field to ticket or article objects. Since is very similar to a text dynamic field
-we will use the ``Base`` and ``BaseText`` drivers (for the legacy API) and ``Base/Text`` (for the new API) as a basis to build this new field.
+we will use the ``Base`` and ``BaseText`` drivers as a basis to build this new field.
 
 .. warning::
 
@@ -13,8 +13,7 @@ To create this new dynamic field, we will create 5 files:
 1. A configuration file (XML) to register the modules.
 2. An admin dialog module (Perl) to setup the field options.
 3. A template module for the admin dialog.
-4. A dynamic field legacy driver (Perl).
-5. A dynamic field driver (Perl).
+4. A dynamic field driver (Perl).
 
 File structure:
 
@@ -38,7 +37,7 @@ File structure:
    |   |   |   |   |AdminDynamicFieldPassword.tt
    ...
    |   |--/System/
-   |   |   |--/DynamicFieldLegacy/
+   |   |   |--/DynamicField/
    |   |   |   |--/Driver/
    |   |   |   |   |Password.pm
    ...
@@ -67,14 +66,14 @@ This is the normal header for a configuration file.
 
 .. code-block:: XML
 
-   <ConfigItem Name="DynamicFieldsLegacy::Driver###Password" Required="0" Valid="1">
-       <Description Translatable="1">DynamicField legacy backend registration.</Description>
+   <ConfigItem Name="DynamicFields::Driver###Password" Required="0" Valid="1">
+       <Description Translatable="1">DynamicField backend registration.</Description>
        <Group>DynamicFieldPassword</Group>
        <SubGroup>DynamicFields::Backend::Registration</SubGroup>
        <Setting>
            <Hash>
                <Item Key="DisplayName" Translatable="1">Password</Item>
-               <Item Key="Module">Kernel::System::DynamicFieldLegacy::Driver::Password</Item>
+               <Item Key="Module">Kernel::System::DynamicField::Driver::Password</Item>
                <Item Key="ConfigDialog">AdminDynamicFieldPassword</Item>
            </Hash>
        </Setting>
@@ -93,7 +92,7 @@ This is the normal header for a configuration file.
        </Setting>
    </ConfigItem>
 
-These settings registers the password dynamic field driver for the back end module (legacy and new API) so it can be included in the list of available dynamic fields types. It also specify its own admin dialog in the key ``ConfigDialog``. This key is used by the master dynamic field admin module to manage this new dynamic field type.
+These settings registers the password dynamic field driver for the back end module so it can be included in the list of available dynamic fields types. It also specify its own admin dialog in the key ``ConfigDialog``. This key is used by the master dynamic field admin module to manage this new dynamic field type.
 
 .. code-block:: XML
 
@@ -881,17 +880,19 @@ Dynamic Field Driver Example
 
 The driver *represents* the dynamic field. It contains several functions that are used wide in the OTOBO framework.
 
-A driver can inherit some functions from base classes, for example the ``TextArea`` driver inherits most of the functions from ``Base.pm`` and ``BaseText.pm`` (``Base/Text.pm`` in the new API) and it only implements the functions that requires different logic or results. The checkbox field driver only inherits from ``Base.pm``, as all other functions are very different from any other base driver.
+A driver can inherit some functions from base classes. For example the ``TextArea`` driver inherits most of the functions from ``Base.pm`` and ``BaseText.pm``.
+This means that ``TextArea`` only needs to implement the functions that requires different logic or results.
+The checkbox field driver only inherits from ``Base.pm``, as all other functions are very different from any other base driver.
 
 .. seealso::
 
-   Please refer to the Perl online documentation (POD) of the module ``/Kernel/System/DynmicFieldLegacy/Backend.pm`` and ``/Kernel/System/DynmicFieldLegacy/Driver/Base.pm`` to have the list of all attributes and possible return data for each function.
+   Please refer to the Perl online documentation (POD) of the module ``/Kernel/System/DynmicField/Backend.pm`` and ``/Kernel/System/DynmicField/Driver/Base.pm`` to have the list of all attributes and possible return data for each function.
 
 In this section the password dynamic field driver is shown and explained. This driver inherits some functions from ``Base.pm`` and ``BaseText.pm`` (``Base/Text.pm`` in the new API) and only implements the functions that needs different results.
 
 
-Dynamic Field Driver Example (Legacy API)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dynamic Field Driver Example
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: Perl
 
@@ -903,18 +904,18 @@ Dynamic Field Driver Example (Legacy API)
    # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
    # --
 
-   package Kernel::System::DynamicFieldLegacy::Driver::Password;
+   package Kernel::System::DynamicField::Driver::Password;
 
    use strict;
    use warnings;
 
-   use parent qw(Kernel::System::DynamicFieldLegacy::Driver::BaseText);
+   use parent qw(Kernel::System::DynamicField::Driver::BaseText);
 
    use Kernel::System::VariableCheck qw(:all);
 
    our @ObjectDependencies = (
        'Kernel::Config',
-       'Kernel::System::DynamicFieldLegacy::Value',
+       'Kernel::System::DynamicField::Value',
        'Kernel::System::Main',
    );
 
@@ -941,7 +942,7 @@ This is the common header, that can be found in common OTOBO modules. The class/
 
        # get the Dynamic Field Backend custom extensions
        my $DynamicFieldDriverExtensions
-           = $Kernel::OM->Get('Kernel::Config')->Get('DynamicFieldsLegacy::Extension::Driver::Password');
+           = $Kernel::OM->Get('Kernel::Config')->Get('DynamicFields::Extension::Driver::Password');
 
        EXTENSION:
        for my $ExtensionKey ( sort keys %{$DynamicFieldDriverExtensions} ) {
@@ -1185,12 +1186,12 @@ The ``DisplayValueRender()`` function returns the field value as plain text, as 
 This function is similar to ``DisplayValueRender()`` but it is used in locations, where no ``LayoutObject`` is available.
 
 
-Other Functions (Legacy API)
-****************************
+Other Functions
+***************
 
 The following are other functions, that might be needed, if the new dynamic field does not inherit from other classes.
 
-To see the complete code of this functions, please take a look directly into the file ``Kernel/System/DynamicFieldLegacy/Driver/Base.pm``.
+To see the complete code of this functions, please take a look directly into the file ``Kernel/System/DynamicField/Driver/Base.pm``.
 
 .. code-block:: Perl
 
@@ -1302,110 +1303,3 @@ This function is used by ``otobo.FillDB.pl`` script to populate the database wit
    sub ObjectMatch { ... }
 
 Used by the notification modules. This function returns 1 if the field is present in the ``$Param{ObjectAttributes}`` parameter and if it matches the given value.
-
-
-Dynamic Field Driver Example (New API)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. code-block:: Perl
-
-   # --
-   # Kernel/System/DynamicField/Driver/Password.pm - Driver for DynamicField backend
-   # Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
-   # --
-   # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-   # the enclosed file COPYING for license information (GPL). If you
-   # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
-   # --
-
-   package Kernel::System::DynamicField::Driver::Password;
-
-   use strict;
-   use warnings;
-
-   use Moose;
-
-   extends 'Kernel::System::DynamicField::Driver::Base::Text';
-
-   our @ObjectDependencies = ();
-
-This is the common header that can be found in the new OTOBO modules since OTOBO 10.
-
-The class/package name is declared via the ``package`` keyword. Note that the ``Base::Text`` is used as the base class.
-
-There's no need to declare the constructor ``BUILD``, unless you need to do something really specific to the driver, during the creation of a new class instance.
-
-.. note::
-
-   Drivers are created only by the ``DynamicFieldObject`` and not directly from any other module.
-
-.. code-block:: Perl
-
-   override 'FormFieldSchema' => sub {
-       return {
-           %{ super() },
-           Type => 'FormPassword',
-       };
-   };
-
-This function is responsible to return the schema of the field, that should be used in edit screens, like ``AgentTicketPhone``, ``AgentTicketNote``, etc.
-
-
-Other Functions (New API)
-*************************
-
-The following are other functions, that are might be needed to implement or override, according to the specification of the driver. Please refer to the file ``Kernel/System/DynamicField/Driver/Base.pm``.
-
-.. code-block:: Perl
-
-   sub ValueGet { ... }
-
-This function retrieves the value from the field, on a specific object. In this case, we are returning the first text value, since the field only stores one text value at a time.
-
-.. code-block:: Perl
-
-   sub ValueSet { ... }
-
-This function is used to store a dynamic field value. In this case, this field only stores one text type value. Other fields could store more than one value on either ``Text``, ``DateTime`` or ``Integer`` format.
-
-.. code-block:: Perl
-
-   sub ValueDelete { ... }
-
-This function is used to delete the values of a certain dynamic field. If no filter is passed, all the values will be deleted. To execute the deletion only for one object, we can pass the filter ``Filters => { ObjectID => '...' }``.
-
-.. code-block:: Perl
-
-   sub ValueValidate { ... }
-
-This function is used to check, if the value is consistent to its type and dynamic field instance.
-
-.. code-block:: Perl
-
-   sub ValueList { ... }
-
-This function is used to get the list of the values for the dynamic field instance.
-
-.. code-block:: Perl
-
-   sub SearchSQLGet { ... }
-
-This function is used by ``TicketSearch`` core module, to build the internal query that searches for a ticket, based on this field as a search parameter.
-
-.. code-block:: Perl
-
-   sub SearchSQLOrderFieldGet { ... }
-
-This function is also a helper for ``TicketSearch`` module. ``$Param{TableAlias}`` should be kept and ``_ValueDBColumn()`` changed in case the driver uses multiple columns, to store it's data.
-
-.. code-block:: Perl
-
-   sub SearchConditionGet { ... }
-
-This function is used by the ticket search and statistics module, to set the correct operator and value to the search on this field.
-
-.. code-block:: Perl
-
-   sub RandomValueSet { ... }
-
-This function is used by ``otobo.FillDB.pl`` script, to populate the database with some test and random data. The value inserted by this function is not really relevant. The only restriction is, that the value must be compatible with the field value type.

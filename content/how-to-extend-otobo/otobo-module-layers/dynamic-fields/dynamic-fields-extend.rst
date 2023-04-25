@@ -6,9 +6,8 @@ To illustrate this process a new dynamic field functionality extension for the f
 To create this extension we will create 4 files:
 
 1. A configuration file (XML) to register the modules.
-2. A back end extension (Perl) to define the new function (legacy API).
-3. A text field driver extension (Perl) that implements the new function for text fields (legacy API).
-4. A text field driver role (Perl) that implements the new function for the text fields (new API).
+2. A back end extension (Perl) to define the new function.
+3. A text field driver extension (Perl) that implements the new function for text fields.
 
 File structure:
 
@@ -24,23 +23,16 @@ File structure:
    |   |   |   |DynamicFieldFooExtension.xml
    ...
    |   |--/System/
-   |   |   |--/DynamicFieldLegacy/
+   |   |   |--/DynamicField/
    |   |   |   FooExtensionBackend.pm
    |   |   |   |--/Driver/
    |   |   |   |   |FooExtensionText.pm
-   ...
-   |   |--/System/
-   |   |   |--/DynamicField/
-   |   |   |   |--/Driver/
-   |   |   |   |   |--/Role/
-   |   |   |   |   |   |FooExtensionText.pm
-
 
 Dynamic Field Foo Extension files
 ---------------------------------
 
-Dynamic Field Extension Configuration File Example (Legacy API)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dynamic Field Extension Configuration File Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The configuration files are used to register the extensions for the back end and drivers as well as new behaviors for each drivers.
 
@@ -99,8 +91,8 @@ This is the registration for an extension in the text dynamic field driver. The 
 Standard closure of a configuration file.
 
 
-Dynamic Field Back End Extension Example (Legacy API)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dynamic Field Back End Extension Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Back end extensions will be loaded transparently into the back end itself as a base class. All defined object and properties from the back end will be accessible in the extension.
 
@@ -221,8 +213,8 @@ The function ``Foo()`` is only used for test purposes. First it checks the dynam
    It is also possible to skip the step that tests if the driver can execute the function. To do that it is necessary to implement a mechanism in the front end module to require a special behavior on the dynamic field, and only after call the function in the back end object.
 
 
-Dynamic Field Driver Extension Example (Legacy API)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dynamic Field Driver Extension Example
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Driver extensions will be loaded transparently into the driver itself as a base class. All defined object and properties from the driver will be accessible in the extension.
 
@@ -272,76 +264,3 @@ This is common header that can be found in common OTOBO modules. The class/packa
    }
 
 The function ``Foo()`` has no special logic. It is only for testing and it always returns 1.
-
-
-Dynamic Field Driver Extension Example (New API)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: Perl
-
-    # --
-    # Kernel/System/DynamicField/Driver/Role/FooExtensionText.pm - Extension for DynamicField Text Driver
-    # Copyright (C) 2001-2019 OTOBO AG, https://otobo.com/
-    # --
-    # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-    # the enclosed file COPYING for license information (GPL). If you
-    # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
-    # --
-
-    package Kernel::System::DynamicField::Driver::Role::FooExtensionText;
-
-    use strict;
-    use warnings;
-
-    use Moose::Role;
-
-    =head1 NAME
-
-    Kernel::System::DynamicField::Driver::Role::FooExtensionText
-
-    =head1 DESCRIPTION
-
-    DynamicFields Text Driver Extension
-
-    =head1 PUBLIC INTERFACE
-
-    This module extends the public interface of L<Kernel::System::DynamicField::Driver::Text>.
-    Please look there for a detailed reference of the functions.
-
-    =cut
-
-This is common header that can be found in common OTOBO role modules. The class/package name is declared via the ``package`` keyword.
-
-.. code-block:: Perl
-
-   sub Foo {
-       my ( $Self, %Param ) = @_;
-       return 1;
-   }
-
-The function ``Foo()`` has no special logic. It is only for testing and it always returns 1.
-
-Now, to apply the role to the driver we need to create an ``Mojolicious`` plugin that will take care of that.
-
-.. code-block:: Perl
-
-   # --
-   # Kernel/WebApp/Plugin/4500DynamicFields.pm - Dynamic fields extensions.
-   # Copyright (C) 2019-2021 Rother OSS GmbH, https://otobo.de/
-   # --
-   # This software comes with ABSOLUTELY NO WARRANTY. For details, see
-   # the enclosed file COPYING for license information (GPL). If you
-   # did not receive this file, see https://www.gnu.org/licenses/gpl-3.0.txt.
-   # --
-
-   use Moose::Util;
-
-   sub register {    ## no critic
-
-       Moose::Util::ensure_all_roles(
-           'Kernel::System::DynamicField::Driver::Text',
-           'Kernel::System::DynamicField::Driver::Role::FooExtensionText',
-       );
-
-       return 1;
-   }

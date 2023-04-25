@@ -6,8 +6,8 @@ Knowing about how front end modules interact with dynamic fields is not strictly
 The following pictures are showing a simple example of how the dynamic fields interact with other OTOBO framework parts.
 
 
-Dynamic Field Interaction (Legacy API)
---------------------------------------
+Dynamic Field Interaction
+-------------------------
 
 .. figure:: images/dfInteraction.png
    :alt: Dynamic Field Interaction
@@ -31,28 +31,3 @@ To store the value of the dynamic field, it is necessary to get the object ID.
 For this example, if the dynamic field is linked to a ticket object, the screen should already have the ``TicketID``, otherwise if the field is linked to an article object, in order to set the value of the field, it is necessary to create the article first. ``ValueSet()`` from the back end object can be used to set the dynamic field value.
 
 In summary, the front end modules does not need to know, how each dynamic field works internally, to get or set their values or to display them. It just needs to call the back end object module and use the fields in a generic way.
-
-
-Dynamic Field Interaction (New API)
------------------------------------
-
-.. figure:: images/dfInteraction-new.png
-   :alt: Dynamic Field Interaction
-
-   Dynamic Field Interaction
-
-The first step is, that the front end module reads the configured dynamic fields.
-
-For example ``AgentTicketNote`` should read ``Ticket::Frontend::AgentTicketNote###DynamicField`` setting. This setting can be used as the filter parameter for ``DynamicField`` core module function ``FieldListGet()``. The screen can store the results of this function, to have the list of the dynamic fields activated for this particular screen.
-
-After that, the screen should load the role ``ProvidesForm`` and define the method ``FormSchema()``, to build the full schema, including the dynamic fields. For each dynamic field, we should call the function ``FormFieldSchema()`` that will return the specific schema for the field.
-
-In case of a submit, the screen could also use the dynamic field driver instance function ``ValueValidate()``, to check the submitted value according to the field configuration.
-
-.. note::
-
-   Other screens could use ``DisplayFieldData()`` instead of ``FormFieldSchema()``, if the screen only shows the field value and in such case, no value validation is needed.
-
-To store the value of the dynamic field, it is necessary to get the object ID.
-
-For this example, if the dynamic field is linked to a ticket object, the screen should already have the ``TicketID``, otherwise if the field is linked to an article object, in order to set the value of the field, it is necessary to create the article first. ``ValueSet()`` from the dynamic field driver can be used to set the dynamic field value.
