@@ -68,3 +68,24 @@ To remove links from OTOBO enter the following command:
 .. code-block:: bash
 
    shell> ~/src/module-tools/remove_links.pl ~/src/otobo/
+
+
+Tipps and tricks
+-------------------------
+
+Debug syntax errors in OTOBO perl files
+~~~~~
+
+Change to the OTOBO Homedirectory:
+
+.. code-block:: bash
+
+   shell> docker exec -it otobo_web_1 bash 
+   # or for non docker 
+   shell> cd /opt/otobo
+
+After that execute the syntax check:
+
+.. code-block:: bash
+
+   shell> perl -cw -I Custom/ -I Custom/Kernel/cpan-lib/ -I . -I Kernel/cpan-lib/ Path/To/The/OTOBO/perlfile.pm
