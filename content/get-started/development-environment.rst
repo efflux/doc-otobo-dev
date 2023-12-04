@@ -13,11 +13,11 @@ First of all a directory must be created in which the modules can be stored. The
 
    shell> git clone git@github.com:RotherOSS/otobo.git -b rel-10_1
 
-For a specific branch like OTOBO 6:
+For other versions like OTOBO 11.0.x:
 
 .. code-block:: bash
 
-   shell> git clone git@github.com:RotherOSS/otobo.git -b rel-6_0
+   shell> git clone git@github.com:RotherOSS/otobo.git -b rel-11_0
 
 Please configure the OTOBO system according to the `installation instructions`_.
 
