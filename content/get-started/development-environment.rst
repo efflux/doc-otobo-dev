@@ -11,7 +11,7 @@ First of all a directory must be created in which the modules can be stored. The
 
 .. code-block:: bash
 
-   shell> git clone git@github.com:RotherOSS/otobo.git -b master
+   shell> git clone git@github.com:RotherOSS/otobo.git -b rel-10_1
 
 For a specific branch like OTOBO 6:
 
@@ -73,15 +73,15 @@ To remove links from OTOBO enter the following command:
 Tipps and tricks
 -------------------------
 
-Debug syntax errors in OTOBO perl files
+Debug syntax errors in OTOBO Perl files
 ~~~~~
 
 Change to the OTOBO Homedirectory:
 
 .. code-block:: bash
 
-   shell> docker exec -it otobo_web_1 bash 
-   # or for non docker 
+   shell> docker exec -it otobo_web_1 bash
+   # or for non docker
    shell> cd /opt/otobo
 
 After that execute the syntax check:
