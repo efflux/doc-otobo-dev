@@ -5,7 +5,7 @@ Autoload modules are a measure of last resort when the regular module layers do 
 They are required whenever a new config is loaded. This assures that they are available in the web interface and in just about all scripts.
 The primary use of autoload modules is to add, or to override, core functionality. Please handle with care!
 
-Agent Authentication Module Configuration Example
+Autoload Module Configuration Example
 -------------------------------------------------
 
 In order to activate an autoload module it must be declared in the system configuration. See for example

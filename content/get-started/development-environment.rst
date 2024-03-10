@@ -11,13 +11,13 @@ First of all a directory must be created in which the modules can be stored. The
 
 .. code-block:: bash
 
-   shell> git clone git@github.com:RotherOSS/otobo.git -b master
+   shell> git clone git@github.com:RotherOSS/otobo.git -b rel-10_1
 
-For a specific branch like OTOBO 6:
+For other versions like OTOBO 11.0.x:
 
 .. code-block:: bash
 
-   shell> git clone git@github.com:RotherOSS/otobo.git -b rel-6_0
+   shell> git clone git@github.com:RotherOSS/otobo.git -b rel-11_0
 
 Please configure the OTOBO system according to the `installation instructions`_.
 
@@ -33,11 +33,11 @@ Clone the `module-tools <https://github.com/RotherOSS/module-tools>`__ module to
 
    shell> git clone git@github.com:OTOBO/module-tools.git
 
-`OTOBOCodePolicy <https://github.com/RotherOSS/otobocodepolicy>`__ is a code quality checker that enforces the use of common coding standards also for the OTOBO development team. It is highly recommended to use it if you plan to make contributions. You can use it as a standalone test script or even register it as a git commit hook that runs every time that you create a commit. Please see `the module documentation <https://github.com/OTOBO/otobocodepolicy/blob/master/doc/en/OTOBOCodePolicy.xml>`__ for details.
+`OTOBOCodePolicy <https://github.com/RotherOSS/CodePolicy>`__ is a code quality checker that enforces the use of common coding standards also for the OTOBO development team. It is highly recommended to use it if you plan to make contributions. You can use it as a standalone test script or even register it as a git commit hook that runs every time that you create a commit. Please see `the module documentation <https://github.com/RotherOSS/CodePolicy/blob/master/doc/en/CodePolicy.xml>`__ for details.
 
 .. code-block:: bash
 
-   shell> git clone git@github.com:RotherOSS/otobocodepolicy.git
+   shell> git clone git@github.com:RotherOSS/CodePolicy.git
 
 
 Linking Expansion Modules
@@ -68,3 +68,24 @@ To remove links from OTOBO enter the following command:
 .. code-block:: bash
 
    shell> ~/src/module-tools/remove_links.pl ~/src/otobo/
+
+
+Tipps and tricks
+-------------------------
+
+Debug syntax errors in OTOBO Perl files
+~~~~~
+
+Change to the OTOBO Homedirectory:
+
+.. code-block:: bash
+
+   shell> docker exec -it otobo_web_1 bash
+   # or for non docker
+   shell> cd /opt/otobo
+
+After that execute the syntax check:
+
+.. code-block:: bash
+
+   shell> perl -cw -I Custom/ -I Custom/Kernel/cpan-lib/ -I . -I Kernel/cpan-lib/ Path/To/The/OTOBO/perlfile.pm

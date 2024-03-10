@@ -13,11 +13,6 @@ All skins are in ``$OTOBO_HOME/var/httpd/htdocs/skins/Agent/$SKIN_NAME``.
 
 Each of the agents can select individually, which of the installed agent skins they want to *wear*.
 
-.. note::
-
-   Skin support for customer interface was dropped with the new external interface. To create customized layout for external interface, use the *Layout* module of the admin interface.
-
-
 How Skins Are Loaded
 --------------------
 
@@ -119,36 +114,34 @@ directory. Then we need to create a new configuration file ``$OTOBO_HOME/Kernel/
 
 .. code-block:: XML
 
-   <?xml version="1.0" encoding="utf-8" ?>
-   <otobo_config version="1.0" init="Changes">
-       <ConfigItem Name="AgentLogo" Required="0" Valid="1">
-           <Description Translatable="1">The logo shown in the header of the agent interface. The URL to the image must be a relative URL to the skin image directory.</Description>
-           <Group>Framework</Group>
-           <SubGroup>Frontend::Agent</SubGroup>
-           <Setting>
-               <Hash>
-                   <Item Key="URL">skins/Agent/custom/img/logo.png</Item>
-                   <Item Key="StyleTop">13px</Item>
-                   <Item Key="StyleRight">75px</Item>
-                   <Item Key="StyleHeight">67px</Item>
-                   <Item Key="StyleWidth">244px</Item>
-               </Hash>
-           </Setting>
-       </ConfigItem>
-       <ConfigItem Name="Loader::Agent::Skin###100-custom" Required="0" Valid="1">
-           <Description Translatable="1">Custom skin for the development manual.</Description>
-           <Group>Framework</Group>
-           <SubGroup>Frontend::Agent</SubGroup>
-           <Setting>
-               <Hash>
-                   <Item Key="InternalName">custom</Item>
-                   <Item Key="VisibleName">Custom</Item>
-                   <Item Key="Description">Custom skin for the development manual.</Item>
-                   <Item Key="HomePage">www.yourcompany.com</Item>
-               </Hash>
-           </Setting>
-       </ConfigItem>
-   </otobo_config>
+    <?xml version="1.0" encoding="utf-8" ?>
+    <otobo_config version="2.0" init="Application">
+        <Setting Name="AgentLogocustom###100-custom" Required="0" Valid="1">
+            <Description Translatable="1">The logo shown in the header of the agent interface for the custom skin . See "AgentLogo" for further description.</Description>
+            <Navigation>Frontend::Agent</Navigation>
+            <Value>
+                <Hash>
+                    <Item Key="URL">skins/Agent/custom/img/logo.png</Item>
+                    <Item Key="StyleTop">13px</Item>
+                    <Item Key="StyleRight">75px</Item>
+                    <Item Key="StyleHeight">67px</Item>
+                    <Item Key="StyleWidth">244px</Item>
+                </Hash>
+            </Value>
+        </Setting>
+        <Setting Name="Loader::Agent::Skin###100-custom" Required="0" Valid="1">
+            <Description Translatable="1">Custom skin for the development manual.</Description>
+            <Navigation>Frontend::Base::Loader</Navigation>
+            <Value>
+                <Hash>
+                    <Item Key="InternalName">custom</Item>
+                    <Item Key="VisibleName" Translatable="1">Custom skin name</Item>
+                    <Item Key="Description" Translatable="1">Custom description.</Item>
+                    <Item Key="HomePage">www.yourcompany.com</Item>
+                </Hash>
+            </Value>
+        </Setting>
+    </otobo_config>
 
 To make this configuration active, we need to navigate to the system configuration module in the admin area of OTOBO. Alternatively, you can run the script:
 
