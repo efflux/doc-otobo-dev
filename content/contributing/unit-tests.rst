@@ -7,14 +7,14 @@ OTOBO provides a test suite which can be used to develop and run unit tests for 
 Creating a Test File
 --------------------
 
-The test files are stored in ``.t`` files under ``scripts/test/*.t``. For example, let's take a look at the file ``scripts/test/Calendar.t`` for the *Calendar* class.
+The test files are stored in ``.t`` files under ``scripts/test``. For example, let's take a look at the file ``scripts/test/Calendar.t`` for the *Calendar* class.
 
 Every test file should ideally instantiate unit test helper object at the start, so it can benefit from some built-in methods provided by it:
 
 .. code-block:: Perl
 
    # --
-   # Copyright (C) 2001-2021 Rother OSS GmbH, https://otobo.de/
+   # Copyright (C) 2001-2024 Rother OSS GmbH, https://otobo.de/
    # --
    # This software comes with ABSOLUTELY NO WARRANTY. For details, see
    # the enclosed file COPYING for license information (GPL). If you
@@ -139,6 +139,12 @@ Good developers make their unit test easy to maintain. Consider putting all test
        }
    }
 
+Selenium Tests
+--------------
+
+Selenium test scripts need a running Selenium server. This server is configured in the SysConfig using the key ``SeleniumTestsConfig``. It that setting
+does not exist, then the tests should not be executed. In OTOBO 11.1.x this check can be achieved by using the module ``Test2::Require::OTOBO::Selenium``.
+In older versions the method ``Kernel::System::UnitTest::Selenium::RunTest()`` does the checking.
 
 Prerequisites for Testing
 -------------------------
