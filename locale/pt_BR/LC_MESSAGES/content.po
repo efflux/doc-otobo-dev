@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OTOBO Developer Manual 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-14 00:06+0200\n"
+"POT-Creation-Date: 2024-07-16 00:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1552,8 +1552,8 @@ msgstr ""
 
 #: ../../content/contributing/unit-tests.rst:20
 msgid ""
-"The test files are stored in ``.t`` files under ``scripts/test/*.t``. For"
-" example, let's take a look at the file ``scripts/test/Calendar.t`` for "
+"The test files are stored in ``.t`` files under ``scripts/test``. For "
+"example, let's take a look at the file ``scripts/test/Calendar.t`` for "
 "the *Calendar* class."
 msgstr ""
 
@@ -1595,11 +1595,25 @@ msgid ""
 "This will provide an easy way to extend the test later:"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:154
+#: ../../content/contributing/unit-tests.rst:153
+msgid "Selenium Tests"
+msgstr ""
+
+#: ../../content/contributing/unit-tests.rst:155
+msgid ""
+"Selenium test scripts need a running Selenium server. This server is "
+"configured in the SysConfig using the key ``SeleniumTestsConfig``. It "
+"that setting does not exist, then the tests should not be executed. In "
+"OTOBO 11.1.x this check can be achieved by using the module "
+"``Test2::Require::OTOBO::Selenium``. In older versions the method "
+"``Kernel::System::UnitTest::Selenium::RunTest()`` does the checking."
+msgstr ""
+
+#: ../../content/contributing/unit-tests.rst:160
 msgid "Prerequisites for Testing"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:156
+#: ../../content/contributing/unit-tests.rst:162
 msgid ""
 "To be able to run the unit tests, you need to have all optional "
 "environment dependencies (Perl modules and other modules) installed, "
@@ -1607,7 +1621,7 @@ msgid ""
 "Run ``bin/otobo.CheckEnvironment.pl`` to verify your module installation."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:158
+#: ../../content/contributing/unit-tests.rst:164
 msgid ""
 "You also need to have an instance of the OTOBO web front end running on "
 "the FQDN that is configured in your local OTOBO's ``Config.pm`` file. "
@@ -1615,41 +1629,41 @@ msgid ""
 " unit tests."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:162
+#: ../../content/contributing/unit-tests.rst:168
 msgid "Testing"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:164
+#: ../../content/contributing/unit-tests.rst:170
 msgid ""
 "To run your tests, just use ``bin/otobo.Console.pl Dev::UnitTest::Run "
 "--test Calendar`` to use ``scripts/test/Calendar.t``."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:178
+#: ../../content/contributing/unit-tests.rst:184
 msgid ""
 "You can even run several tests at once, just supply additional ``--test``"
 " arguments to the command:"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:196
+#: ../../content/contributing/unit-tests.rst:202
 msgid ""
 "If you execute ``bin/otobo.Console.pl Dev::UnitTest::Run`` without any "
 "argument, it will run all tests found in the system. Please note that "
 "this can take some time to finish."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:198
+#: ../../content/contributing/unit-tests.rst:204
 msgid ""
 "Provide ``--verbose`` argument in order to see messages about successful "
 "tests too. Any errors encountered during testing will be displayed "
 "regardless of this switch, provided they are actually raised in the test."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:202
+#: ../../content/contributing/unit-tests.rst:208
 msgid "Unit Test API"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:204
+#: ../../content/contributing/unit-tests.rst:210
 msgid ""
 "OTOBO provides API for unit testing that was used in the previous "
 "example. Here we'll list the most important functions, please also see "
@@ -1657,59 +1671,59 @@ msgid ""
 "<https://otobo.github.io/doc/api/otobo/8.0/Perl/Kernel/System/UnitTest.pm.html>`__."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:214
+#: ../../content/contributing/unit-tests.rst:220
 msgid "``True()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:207
+#: ../../content/contributing/unit-tests.rst:213
 msgid "This function tests whether given scalar value is a true value in Perl."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:224
+#: ../../content/contributing/unit-tests.rst:230
 msgid "``False()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:217
+#: ../../content/contributing/unit-tests.rst:223
 msgid "This function tests whether given scalar value is a false value in Perl."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:235
+#: ../../content/contributing/unit-tests.rst:241
 msgid "``Is()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:227
+#: ../../content/contributing/unit-tests.rst:233
 msgid "This function tests whether the given scalar variables are equal."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:246
+#: ../../content/contributing/unit-tests.rst:252
 msgid "``IsNot()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:238
+#: ../../content/contributing/unit-tests.rst:244
 msgid "This function tests whether the given scalar variables are unequal."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:257
+#: ../../content/contributing/unit-tests.rst:263
 msgid "``IsDeeply()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:249
+#: ../../content/contributing/unit-tests.rst:255
 msgid ""
 "This function compares complex data structures for equality. ``$A`` and "
 "``$B`` have to be references."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:268
+#: ../../content/contributing/unit-tests.rst:274
 msgid "``IsNotDeeply()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:260
+#: ../../content/contributing/unit-tests.rst:266
 msgid ""
 "This function compares complex data structures for inequality. ``$A`` and"
 " ``$B`` have to be references."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:270
+#: ../../content/contributing/unit-tests.rst:276
 msgid ""
 "Besides this, unit test helper object also provides some helpful methods "
 "for common test conditions. For full reference, please see the online API"
@@ -1717,75 +1731,75 @@ msgid ""
 "<https://doc.otobo.com/doc/api/otobo/8.0/Perl/Kernel/System/UnitTest/Helper.pm.html>`__."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:282
+#: ../../content/contributing/unit-tests.rst:288
 msgid "``GetRandomID()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:273
+#: ../../content/contributing/unit-tests.rst:279
 msgid ""
 "This function creates a random ID that can be used in tests as a unique "
 "identifier. It is guaranteed that within a test this function will never "
 "return a duplicate."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:277
+#: ../../content/contributing/unit-tests.rst:283
 msgid ""
 "Please note that these numbers are not really random and should only be "
 "used to create test data."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:292
+#: ../../content/contributing/unit-tests.rst:298
 msgid "``TestUserCreate()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:285
+#: ../../content/contributing/unit-tests.rst:291
 msgid ""
 "This function creates a test user that can be used in tests. It will be "
 "set to invalid automatically during the destructor. It returns the login "
 "name of the new user, the password is the same."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:305
+#: ../../content/contributing/unit-tests.rst:311
 msgid "``FixedTimeSet()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:295
+#: ../../content/contributing/unit-tests.rst:301
 msgid ""
 "This functions makes it possible to override the system time as long as "
 "this object lives. You can pass an optional time parameter that should be"
 " used, if not, the current system time will be used."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:299
+#: ../../content/contributing/unit-tests.rst:305
 msgid ""
 "All calls to methods of ``Kernel::System::Time`` and "
 "``Kernel::System::DateTime`` will use the given time afterwards."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:308
+#: ../../content/contributing/unit-tests.rst:314
 msgid "``FixedTimeUnset()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:308
+#: ../../content/contributing/unit-tests.rst:314
 msgid "This functions restores the regular system time behavior."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:311
+#: ../../content/contributing/unit-tests.rst:317
 msgid "``FixedTimeAddSeconds()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:311
+#: ../../content/contributing/unit-tests.rst:317
 msgid ""
 "This functions adds a number of seconds to the fixed system time which "
 "was previously set by ``FixedTimeSet()``. You can pass a negative value "
 "to go back in time."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:326
+#: ../../content/contributing/unit-tests.rst:332
 msgid "``ConfigSettingChange()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:314
+#: ../../content/contributing/unit-tests.rst:320
 msgid ""
 "This functions temporarily changes a configuration setting system wide to"
 " another value, both in the current instance of the ``ConfigObject`` and "
@@ -1793,16 +1807,16 @@ msgid ""
 "``Helper`` object is destroyed."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:318
-#: ../../content/contributing/unit-tests.rst:333
+#: ../../content/contributing/unit-tests.rst:324
+#: ../../content/contributing/unit-tests.rst:339
 msgid "Please note that this will not work correctly in clustered environments."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:355
+#: ../../content/contributing/unit-tests.rst:361
 msgid "``CustomCodeActivate()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:329
+#: ../../content/contributing/unit-tests.rst:335
 msgid ""
 "This function will temporarily include custom code in the system. For "
 "example, you may use this to redefine a subroutine from another class. "
@@ -1810,30 +1824,30 @@ msgid ""
 "removed when the ``Helper`` object is destroyed."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:382
+#: ../../content/contributing/unit-tests.rst:388
 msgid "``ProvideTestDatabase()``"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:358
+#: ../../content/contributing/unit-tests.rst:364
 msgid ""
 "This function will provide a temporary database for the test. Please "
 "first define test database settings in ``Kernel/Config.pm``, i.e:"
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:368
+#: ../../content/contributing/unit-tests.rst:374
 msgid ""
 "The method call will override global database configuration for duration "
 "of the test, i.e. temporary database will receive all calls sent over "
 "system ``DBObject``."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:370
+#: ../../content/contributing/unit-tests.rst:376
 msgid ""
 "All database contents will be automatically dropped when the ``Helper`` "
 "object is destroyed."
 msgstr ""
 
-#: ../../content/contributing/unit-tests.rst:372
+#: ../../content/contributing/unit-tests.rst:378
 msgid ""
 "This method returns ``undef`` in case the test database is not "
 "configured. If it is configured, but the supplied XML cannot be read or "
@@ -11254,4 +11268,12 @@ msgstr ""
 #: ../../content/index.rst:43
 msgid "Authors: OTRS AG (original version), Rother OSS GmbH (https://otobo.de)."
 msgstr ""
+
+#~ msgid ""
+#~ "The test files are stored in "
+#~ "``.t`` files under ``scripts/test/*.t``. For"
+#~ " example, let's take a look at "
+#~ "the file ``scripts/test/Calendar.t`` for the"
+#~ " *Calendar* class."
+#~ msgstr ""
 
